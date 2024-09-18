@@ -4,9 +4,14 @@ import GameCard from "./GameCard";
 import CriticScore from "./CriticScore";
 import SkeletonCardGames from "./SkeletonCardGames";
 import GameCardContainer from "./GameCardContainer";
+import { Genre } from "../Hooks/useGenres";
 
-const GameGrid = () => {
-  const { data, error, isLoading } = useGames();
+interface Props{
+  SeletedGenre: Genre | null;
+}
+
+const GameGrid = ({SeletedGenre}: Props) => {
+  const { data, error, isLoading } = useGames(SeletedGenre);
   const skeletons = [1, 2, 3, 4, 5, 6];
   return (
     <>
@@ -18,13 +23,13 @@ const GameGrid = () => {
       >
         {isLoading &&
           skeletons.map((skeleton) => (
-            <GameCardContainer>
-              <SkeletonCardGames key={skeleton} />
+            <GameCardContainer  key={skeleton} >
+              <SkeletonCardGames/>
             </GameCardContainer>
           ))}
         {data.map((game) => (
-          <GameCardContainer>
-            <GameCard key={game.id} game={game} />
+          <GameCardContainer key={game.id}>
+            <GameCard game={game} />
           </GameCardContainer>
         ))}
       </SimpleGrid>
