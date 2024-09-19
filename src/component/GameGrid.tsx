@@ -5,14 +5,14 @@ import CriticScore from "./CriticScore";
 import SkeletonCardGames from "./SkeletonCardGames";
 import GameCardContainer from "./GameCardContainer";
 import { Genre } from "../Hooks/useGenres";
+import { GameQuery } from "../App";
 
 interface Props {
-  SeletedGenre: Genre | null;
-  SelectedPlatform: Platform | null;
+  gameQuery: GameQuery;
 }
 
-const GameGrid = ({ SeletedGenre, SelectedPlatform }: Props) => {
-  const { data, error, isLoading } = useGames(SeletedGenre, SelectedPlatform);
+const GameGrid = ({ gameQuery }: Props) => {
+  const { data, error, isLoading } = useGames(gameQuery);
   const skeletons = [1, 2, 3, 4, 5, 6];
   return (
     <>
