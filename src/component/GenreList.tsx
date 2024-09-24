@@ -6,7 +6,6 @@ import {
   List,
   ListItem,
   Spinner,
-  Text,
 } from "@chakra-ui/react";
 import useGenres, { Genre } from "../Hooks/useGenres";
 import getCroopedImages from "../services/image-url";
@@ -31,7 +30,7 @@ const GenreList = ({ selectedGenre, onSelcetGenre }: Props) => {
                 boxSize="32px"
                 borderRadius={8}
                 objectFit="cover"
-                src={getCroopedImages(genre.image_background)}
+                src={getCroopedImages(genre.background_image)}
               />
               <Button
                 whiteSpace="normal"
